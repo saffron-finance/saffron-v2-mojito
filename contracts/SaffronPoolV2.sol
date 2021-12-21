@@ -51,10 +51,10 @@ contract SaffronPoolV2 is ReentrancyGuard {
   }
 
   // System Events
-  event FundsDeposited(uint256 amount, uint256 lp_amount_minted, address owner);
-  event FundsWithdrawn(uint256 lp_amount, uint256 amount_base, uint256 exchange_rate, address owner);
+  event FundsDeposited(uint256 amount, uint256 lp_amount_minted, address indexed owner);
+  event FundsWithdrawn(uint256 lp_amount, uint256 amount_base, uint256 exchange_rate, address indexed owner);
   event ExchangeRateUpdated(uint256 senior_rate, uint256 fee_rate, uint256 senior_token_supply, uint256 latest_pool_holdings, uint256 yield_receiver_supply);
-  event NFTUnfreezeBegun(uint256 token_id, address owner);
+  event NFTUnfreezeBegun(uint256 token_id, address indexed owner);
   event InconsistencyReported(uint256 latest_pool_holdings, uint256 yield_receiver_supply, uint256 current_pool_holdings, uint256 current_yield_receiver_supply, bool after_update);
 
   constructor(address _adapter, address _base_asset, string memory name, string memory symbol, string memory _pool_name) {

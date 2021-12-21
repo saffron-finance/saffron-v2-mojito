@@ -36,8 +36,8 @@ contract SaffronInsuranceFund is SaffronConverter, ReentrancyGuard {
   }
 
   // System Events
-  event FundsDeposited(uint256 tranche, uint256 lp, uint256 principal, uint256 token_id, address owner);
-  event FundsWithdrawn(uint256 tranche, uint256 principal, uint256 earnings, uint256 token_id, address owner, address caller);
+  event FundsDeposited(uint256 tranche, uint256 lp, uint256 principal, uint256 token_id, address indexed owner);
+  event FundsWithdrawn(uint256 tranche, uint256 principal, uint256 earnings, uint256 token_id, address indexed owner, address caller);
  
   constructor(address _insurance_asset, address _pool_base_asset) {
     require(_insurance_asset != address(0) && _pool_base_asset != address(0), "can't construct with 0 address");
