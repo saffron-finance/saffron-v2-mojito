@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.4;
 
 interface ISaffron_Mojito_AdapterV2 {
     function set_pool(address pool) external;
