@@ -187,7 +187,7 @@ contract SaffronConverter {
   /// INTERNAL
   // Returns boolean depending on whether or not removeLiquidity would return zero
   function remove_liquidity_would_return_zero(uint256 balance_to_burn, address _pair_address) internal view returns (bool) {
-    (uint256 balance0, uint256 balance1, uint256 blocktime) = IUniswapV2Pair(_pair_address).getReserves();
+    (uint256 balance0, uint256 balance1, ) = IUniswapV2Pair(_pair_address).getReserves();
     uint256 totalSupply = IUniswapV2Pair(_pair_address).totalSupply();
     uint256 amount0 = balance_to_burn * balance0 / totalSupply;
     uint256 amount1 = balance_to_burn * balance1 / totalSupply;

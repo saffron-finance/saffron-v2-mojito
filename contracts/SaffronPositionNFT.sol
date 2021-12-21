@@ -58,6 +58,7 @@ contract SaffronPositionNFT is ERC721Enumerable {
   function baseURI() public pure returns (string memory) {
     return "ipfs://QmVrcjjJfYHKhCG6uBZUgUMWRxw5XxVWNN71xzkuvDkNgW/";
   }
+
   function tokenURI(uint256 tokenId) public pure override returns (string memory) {
     return "ipfs://QmVrcjjJfYHKhCG6uBZUgUMWRxw5XxVWNN71xzkuvDkNgW/1";
   }
