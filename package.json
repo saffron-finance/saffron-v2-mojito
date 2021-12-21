@@ -1,0 +1,41 @@
+{
+  "name": "saffron-staking",
+  "version": "1.0.0",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy:ropsten": "npx hardhat run --network ropsten scripts/deploy.js",
+    "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/deploy.js",
+    "deploy:mainnet": "npx hardhat run --network mainnet scripts/deploy.js",
+    "deploy:kcc": "npx hardhat run --network kcc_main scripts/deploy.js",
+    "deployInit:polygon": "npx hardhat run --network polygon_main scripts/deployInit.js",
+    "deployHelper:localhost": "npx hardhat run --network localhost scripts/deployHelper.js",
+    "deploy:localhost": "npx hardhat run --network localhost scripts/deploy.js",
+    "test": "npx hardhat test",
+    "test_verbose": "npx hardhat --verbose test",
+    "test:polygon": "npx hardhat test --network polygon_main",
+    "coverage": "npx hardhat coverage"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/cli": "^2.8.2",
+    "@openzeppelin/contracts": "^4.1.0",
+    "@openzeppelin/test-helpers": "^0.5.10",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^2.1.6",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.4",
+    "hardhat": "2.6.5",
+    "hardhat-gas-reporter": "^1.0.4",
+    "hardhat-preprocessor": "^0.1.4",
+    "prettier-plugin-solidity": "^1.0.0-beta.6",
+    "seedrandom": "^3.0.5",
+    "solidity-coverage": "^0.7.16"
+  }
+}
