@@ -6,7 +6,6 @@ import "../interfaces/ISaffron_Mojito_AdapterV2.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "../SaffronConverter.sol";
 import "../interfaces/IMojitoChef.sol";
-import "hardhat/console.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "../interfaces/IUniswapRouterV2.sol";
 

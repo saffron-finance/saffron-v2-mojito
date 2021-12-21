@@ -3,7 +3,6 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "hardhat/console.sol";
 
 contract SaffronPositionToken is ERC20 {
   address public pool;  // Address of SaffronV2 pool that owns this token

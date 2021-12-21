@@ -8,7 +8,6 @@ import "./SaffronConverter.sol";
 import "./interfaces/IUniswapRouterV2.sol";
 import "./interfaces/IUniswapV2Pair.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "hardhat/console.sol";
 
 contract SaffronInsuranceFund is SaffronConverter, ReentrancyGuard {
   using SafeERC20 for IERC20;

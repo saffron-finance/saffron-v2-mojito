@@ -7,7 +7,6 @@ import "./interfaces/IUniswapV2Pair.sol";
 import "./interfaces/IUniswapV2Factory.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "hardhat/console.sol";
 
 contract SaffronConverter {
   using SafeERC20 for IERC20;

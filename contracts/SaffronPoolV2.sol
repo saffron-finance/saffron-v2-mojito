@@ -7,7 +7,6 @@ import "./SaffronPositionToken.sol";
 import "./SaffronPositionNFT.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "hardhat/console.sol";
 
 contract SaffronPoolV2 is ReentrancyGuard {
   using SafeERC20 for IERC20;
@@ -147,7 +146,6 @@ contract SaffronPoolV2 is ReentrancyGuard {
     if (uv.senior_token_supply == 0) senior_exchange_rate = 1e18;
     if (uv.latest_pool_holdings < uv.yield_receiver_supply) {
       emit InconsistencyReported(uv.latest_pool_holdings, uv.yield_receiver_supply, 0, 0, false);
-      console.log("   \x1b[0m\x1b[45m FATAL ERROR: latest_pool_holdings < yield_receiver_supply \x1b[0m", uv.latest_pool_holdings, uv.yield_receiver_supply);
       return;
     }
 
