@@ -35,17 +35,6 @@ contract SaffronPositionNFT is ERC721Enumerable {
     return token_id;
   }
 
-  function renew(uint256 token_id) external {
-    /*
-    require(msg.sender == insurance_fund, "must be insurance fund");
-    require(tranche[token_id] == 2, "must be insurance NFT");
-    require(expiration[token_id] > 0 && block.timestamp > expiration[token_id], "can't renew NFT: too early");
-    balance[token_id] = 0;
-    expiration[token_id] = 0;
-    principal[token_id] = 0;
-    */
-  }
-
   function burn(uint256 token_id) external {
     require(msg.sender == pool || msg.sender == insurance_fund, "only pool or fund can burn");
     require(expiration[token_id] > 0 && block.timestamp > expiration[token_id], "can't redeem NFT: too early");
