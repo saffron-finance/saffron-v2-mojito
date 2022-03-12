@@ -494,7 +494,7 @@ describe("📜 SaffronStakingV2 function coverage", () => {
   });
   
   it("should have autocompounder emergency_withdraw work correctly", async ()=> {
-    
+   
     // get mlp balances before emergency_withdraw
     let mojito_mlp_before = await mojitoswap.userInfo(MJT_WKCS_pid, autocompounder.address);
     let autocompounder_mlp_before = await mlp.balanceOf(autocompounder.address);
@@ -509,6 +509,51 @@ describe("📜 SaffronStakingV2 function coverage", () => {
     
     // verify that only the governance of contract can do sweep_erc
     await expect(autocompounder.connect(deployer).emergency_withdraw(MJT_WKCS_pid,mojito_mlp_before)).to.not.be.reverted;
+
+    // get mlp balances after sweep
+    let mojito_mlp_after = await await mojitoswap.userInfo(MJT_WKCS_pid, autocompounder.address);
+    let autocompounder_mlp_after = await mlp.balanceOf(autocompounder.address);
+    
+    // check that recipient got the balance
+    expect(autocompounder_mlp_after.sub(autocompounder_mlp_before)).to.be.eql(mojito_mlp_before, "recipient balance after should equal contract balance before");
+    
+    // check that the contract balance is 0 mlp 
+    expect(mojito_mlp_after).to.be.eql(BN.from(0), "contract balance after should be 0 mlp");
+
+  });
+  
+    
+  it("should have autocompounder chef_emergency_withdraw work correctly", async ()=> {
+//    // toggle disable_deposits on
+//    await saffronPoolV2.connect(deployer).disable_deposits(false);
+//    await saffronPoolV2.connect(deployer).shut_down_pool(false);
+//
+//    // make deposits from 3 users
+//    let depositAmount = BN.from('10000000');
+//    await mlp.connect(fred).approve(saffronPoolV2.address, BN.from('0'));
+//    await mlp.connect(fred).approve(saffronPoolV2.address, depositAmount);
+//    await saffronPoolV2.connect(fred).deposit(depositAmount);
+//    depositAmount = BN.from('711112');
+//    await mlp.connect(gary).approve(saffronPoolV2.address, BN.from('0'));
+//    await mlp.connect(gary).approve(saffronPoolV2.address, depositAmount);
+//    await saffronPoolV2.connect(gary).deposit(depositAmount);
+//    depositAmount = BN.from('99821');
+//    await mlp.connect(hans).approve(saffronPoolV2.address, BN.from('0'));
+//    await mlp.connect(hans).approve(saffronPoolV2.address, depositAmount);
+//    await saffronPoolV2.connect(hans).deposit(depositAmount);
+    
+    // get mlp balances before emergency_withdraw
+    let mojito_mlp_before = await mojitoswap.userInfo(MJT_WKCS_pid, autocompounder.address);
+    let autocompounder_mlp_before = await mlp.balanceOf(autocompounder.address);
+
+    // verify that only the governance of contract can do emergency_withdraw
+    await expect(autocompounder.connect(alex).chef_emergency_withdraw(MJT_WKCS_pid)).to.be.revertedWith("must be governance");
+    
+    console.log("mojito_mlp_before: ",mojito_mlp_before.toString());
+    console.log("autocompounder_mlp_before: ",autocompounder_mlp_before.toString());
+    
+    // verify that only the governance of contract can do sweep_erc
+    await expect(autocompounder.connect(deployer).chef_emergency_withdraw(MJT_WKCS_pid)).to.not.be.reverted;
 
     // get mlp balances after sweep
     let mojito_mlp_after = await await mojitoswap.userInfo(MJT_WKCS_pid, autocompounder.address);

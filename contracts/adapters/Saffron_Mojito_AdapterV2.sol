@@ -112,6 +112,11 @@ contract SaffronMojitoAutocompounder is SaffronConverter, ReentrancyGuard {
     mojito_chef.withdraw(_pid, _amount);
   }
 
+  // Withdraw funds from MojitoChef in case of emergency with the chef contract
+  function chef_emergency_withdraw(uint256 _pid) external {
+    require(msg.sender == governance, "must be governance");
+    mojito_chef.emergencyWithdraw(_pid);
+  }
 }
 
 
